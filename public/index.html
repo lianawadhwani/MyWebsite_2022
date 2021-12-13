@@ -48,7 +48,43 @@
   <textarea name="messages"> </textarea>
 </div>
 <input class="button" type="submit" value="Submit" name="">
-</form> 
+</form>
+
+<div class="simon">
+  <button onclick="MyFunction()" class="green block-filled1" id="greenButton"> greenButton </button>
+  <button onclick="MyFunction2()" class="red block-filled2" id="redButton"> redButton </button>
+  <button onclick="MyFunction3()" class="blue block-filled3" id="blueButton"> blueButton </button>
+  <button onclick="MyFunction4()" class="yellow block-filled4" id="yellowButton"> yellowButton </button>
+</div>
 </body>
+
+<script>
+function MyFunction() {
+  var greenButton = document.getElementById("greenButton");
+  greenButton.classList.toggle("green");
+}
+
+function MyFunction2() {
+  var redButton = document.getElementById("redButton");
+  redButton.classList.toggle("red");
+}
+
+function MyFunction3() {
+  var blueButton = document.getElementById("blueButton");
+  blueButton.classList.toggle("blue");
+}
+
+function MyFunction4(){
+  var yellowButton = document.getElementById("yellowButton");
+  yellowButton.classList.toggle("yellow");
+}
+
+
+//  var greenButton=document.getElementById('greenButton');
+//  greenButton.addEventListener("onclick", function(){
+  //  console.log('green button clicked');
+//    greenButton.classList.toggle('green');
+//  });
+</script>
 
 </html>

@@ -25,7 +25,7 @@
   border-radius: 10px;
   padding: 5px;
   width: 400px;
-  position:absolute;top:65%;
+  position:absolute;top:90%;
 }
 
 .img2{
@@ -33,7 +33,7 @@
   border-radius:10px;
   padding: 5px;
   width: 400px;
-  position: absolute; top: 60%;
+  position: absolute; top: 85%;
   position:absolute; left:35%;
 }
 
@@ -55,4 +55,63 @@
 
 .my-form label{
   display:block;
+}
+
+.block-filled1{
+  background-color: #55eb34;
+  border-style: solid;
+  border-color: black;
+  width:90px;
+  height:90px;
+}
+
+.block-filled2{
+  background-color: #de8983;
+  border-style: solid;
+  border-color: black;
+  width:90px;
+  height:90px;
+}
+
+.block-filled3{
+  background-color: #83ccde;
+  border-style: solid;
+  border-color: black;
+  width:90px;
+  height:90px;
+}
+
+.block-filled4{
+  background-color: #e2ed6d;
+  border-style: solid;
+  border-color: black;
+  width:90px;
+  height:90px;
+}
+
+
+
+.green{
+  background-color: green;
+  width:90px;
+  height:90px;
+}
+
+
+.red{
+  background-color:red;
+  width:90px;
+  height: 90px;
+}
+
+.blue{
+  background-color:blue;
+  width:90px;
+  height: 90px;
+}
+
+.yellow{
+  background-color:yellow;
+  width:90px;
+  height:90px;
 }
