@@ -55,6 +55,7 @@
   <button onclick="MyFunction2()" class="red block-filled2" id="redButton"> redButton </button>
   <button onclick="MyFunction3()" class="blue block-filled3" id="blueButton"> blueButton </button>
   <button onclick="MyFunction4()" class="yellow block-filled4" id="yellowButton"> yellowButton </button>
+  <button class="button" id="start">Start </button>
 </div>
 </body>
 
@@ -77,6 +78,68 @@ function MyFunction3() {
 function MyFunction4(){
   var yellowButton = document.getElementById("yellowButton");
   yellowButton.classList.toggle("yellow");
+}
+
+var playerLevel=[];// array that keeps the correct order
+var input=[]; // what the user puts in
+var num; // random num generator
+var light;
+var level; // keeps track of the level the player is on
+var correct; // true if correct player order and false if incorrect order
+var computer; // true if computers turn
+var win; // true if player wins the game
+var greenButton = document.querySelector("#greenButton");
+var greenButton = document.querySelector("#yellowButton");
+var greenButton = document.querySelector("#redButton");
+var greenButton = document.querySelector("#blueButton");
+var startButton=document.querySelector("#start");
+
+startButton.addEventListener('click', (event)==>){
+  playGame(); // if the user clicks the on button then play the game!
+});
+
+function playGame(){
+  win=false;
+  playerLevel=[];
+  input=[];
+  light=0;
+  level=1;
+  correct=true;
+
+  for (let i=1; i<=level , i++){
+      playerLevel.push(getRandomInt(4)); 
+  }
+
+
+
+}
+
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function LightUp(){
+  for (let i=0; i<playerLevel.length; i++){
+    var ran=playerLevel[i];
+    if (ran==0){
+      console.log(setTimeout(() => {MyFunction()}, 2000));
+    } else if (ran==1){
+      console.log(setTimeout(() => {MyFunction2()}, 2000));
+    } else if (ran==2){
+      console.log(setTimeout(() => {MyFunction3()}, 2000));
+    } else{
+      console.log(setTimeout(() => {MyFunction4()}, 2000));
+    }
+  }
+}
+
+function correctOrder(){
+  var playerOrder = [];
+  for (let i=0; i<playLevel.length; i++){
+
+
+  }
 }
 
 
