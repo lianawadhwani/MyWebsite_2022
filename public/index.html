@@ -46,39 +46,185 @@
 </form>
 
 <div class="simon">
-  <button class="active green" id="green"> greenButton </button>
-  <button class="active red" id="red"> redButton </button>
-  <button class="active blue" id="blue"> blueButton </button>
-  <button class="active yellow" id="yellow"> yellowButton </button>
-  <button onclick="lightUp()" class="button" id="start">Start </button>
+  <button onclick="(function(){userOrder.push(0); update_state();})();" class="active green" id="green"> greenButton </button>
+  <button onclick="(function(){userOrder.push(1); update_state();})();" class="active red" id="red"> redButton </button>
+  <button onclick="(function(){userOrder.push(2); update_state();})();" class="active blue" id="blue"> blueButton </button>
+  <button onclick="(function(){userOrder.push(3); update_state();})();" class="active yellow" id="yellow"> yellowButton </button>
+  <button onclick="start()" class="button" id="start">Start </button>
 
 </div>
 
 <script>
-var correctOrder=[0,1];
+var correctOrder=[];
 var userOrder=[];
 var green=document.getElementById("green");
 var red=document.getElementById("red");
 var yellow =document.getElementById("yellow");
 var blue=document.getElementById("blue");
 
-
+function random(){
+var ran=  Math.floor(Math.random() * 4);
+  correctOrder.push(ran);
+}
 
 function lightUp(){
-  for (let i=0; i<correctOrder.length; i++){
+
+var i = 0;
+
+  function myLoop() {
+
+     setTimeout(function() {
+       var ran=correctOrder[i];
+       if (ran==0){
+           setTimeout(() => {green.classList.remove("active")}, 500);
+           setTimeout(() => {green.classList.add("active")}, 1000);
+       }
+       else if (ran==1){
+           setTimeout(() => {red.classList.remove("active")}, 500);
+           setTimeout(() => {red.classList.add("active")}, 1000);
+       }
+       else if (ran==2){
+           setTimeout(() => {blue.classList.remove("active")}, 500);
+           setTimeout(() => {blue.classList.add("active")}, 1000);
+       }
+       else if (ran==3){
+           setTimeout(() => {yellow.classList.remove("active")}, 500);
+           setTimeout(() => {yellow.classList.add("active")}, 1000);
+       }
+           i++;
+           if (i < correctOrder.length) {
+             myLoop()
+           }
+       }, 1000)
+
+    }
+
+   myLoop();
+}
+
+
+function start(){
+  random();
+  lightUp();
+}
+
+function update_state() {
+ 	if (userOrder.length == correctOrder.length) {
+      if (arraysMatch(userOrder, correctOrder)) {
+        userOrder=[];
+        random();
+        lightUp();
+      }
+      else {
+        alert (" :( ");
+        userOrder=[];
+        correctOrder=[];
+      }
+    }
+}
+
+
+var arraysMatch = function (arr1, arr2) {
+
+	// Check if the arrays are the same length
+	if (arr1.length !== arr2.length) return false;
+
+	// Check if all items exist and are in the same order
+	for (var i = 0; i < arr1.length; i++) {
+		if (arr1[i] !== arr2[i]) return false;
+	}
+
+	// Otherwise, return true
+	return true;
+};
+
+/*
+function lightUp(){
+  for (var i=0; i<correctOrder.length; i++){
     var ran=correctOrder[i];
     if (ran==0){
       setTimeout(() => {green.classList.remove("active")}, 500);
       setTimeout(() => {green.classList.add("active")}, 1000);
+      sleep(1000);
     }
     else if (ran==1){
       setTimeout(() => {red.classList.remove("active")}, 500);
       setTimeout(() => {red.classList.add("active")}, 1000);
     }
+
   }
+}
+*/
+  /*
+  setTimeout(()=>{
+      if(correctOrder[ran]==0) zero();
+      if(correctOrder[ran]==1) one();
+      if(correctOrder[ran]==2) two();
+      if(correctOrder[ran]==3) three();
+    }, 200);
+  */
+//}
+
+/*
+function runLightUp(){
+  for (var i=0; i<correctOrder.length; i++){
+    var ran=correctOrder[i];
+      intervalId=setInterval(lightUp, 800);
+      lightUp();
+  }
+}
+
+
+
+function zero(){
+  green.classList.remove("active");
+  setTimeout(() => {green.classList.add("active")}, 600);
+}
+
+function one(){
+  green.classList.remove("active");
+  setTimeout(() => {green.classList.add("active")}, 600);
+}
+
+function two(){
+  green.classList.remove("active");
+  setTimeout(() => {green.classList.add("active")}, 600);
+}
+
+function three(){
+  green.classList.remove("active");
+  setTimeout(() => {green.classList.add("active")}, 600);
+}
+
+function playGame(){
+  for (var i=1; i<21; i++){
+    runLightUp();
+    green.addEventListener("click", function() {
+    userOrder.push(0);
+});
+red.addEventListener("click", function() {
+userOrder.push(1);
+});
+blue.addEventListener("click", function() {
+userOrder.push(2);
+});
+yellow.addEventListener("click", function() {
+userOrder.push(3);
+});
+if (arraysMatch(correctOrder,userOrder)){
+  random();
+}
+else{
+  alert("you lost");
+  break;
+}
 
 }
 
+}
+
+
+*/
  </script>
 
 </body>
