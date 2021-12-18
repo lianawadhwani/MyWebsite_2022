@@ -15,11 +15,6 @@
   </div>
   </p>
 </div>
-<div class="div2">
-  <img class="image1" src="https://www.pumpkin.care/blog/wp-content/uploads/2021/07/Can-Dogs-Eat-Honey.jpeg" alt="Dog as Bee"> </img>
-</div>
-<div class="div3">
-  <img class="img2" src="http://cdn.akc.org/content/article-body-image/funny-french_bulldog.jpg"alt= "yoga dog" </img>
 
 <div class="block">
   <h3>Heading</h3>
@@ -51,90 +46,37 @@
 </form>
 
 <div class="simon">
-  <button onclick="green()" class="green block-filled1" id="greenButton"> greenButton </button>
-  <button onclick="red()" class="red block-filled2" id="redButton"> redButton </button>
-  <button onclick="blue()" class="blue block-filled3" id="blueButton"> blueButton </button>
-  <button onclick="yellow()" class="yellow block-filled4" id="yellowButton"> yellowButton </button>
-  <button onclick="playGame()" class="button" id="start">Start </button>
+  <button class="active green" id="green"> greenButton </button>
+  <button class="active red" id="red"> redButton </button>
+  <button class="active blue" id="blue"> blueButton </button>
+  <button class="active yellow" id="yellow"> yellowButton </button>
+  <button onclick="lightUp()" class="button" id="start">Start </button>
+
 </div>
 
 <script>
-var blueButton=document.getElementById('blueButton');
-var yellowButton=document.getElementById('yellowButton');
-var redButton=document.getElementById('redButton');
-var greenButton=document.getElementById('greenButton');
-
-function green(){
-      greenButton.classList.toggle("green");
-}
-
-function red() {
-  redButton.classList.toggle("red");
-}
-function blue() {
-  blueButton.classList.toggle("blue");
-}
-function yellow(){
-  yellowButton.classList.toggle("yellow");
-}
-
-var correctOrder=[0];
+var correctOrder=[0,1];
 var userOrder=[];
+var green=document.getElementById("green");
+var red=document.getElementById("red");
+var yellow =document.getElementById("yellow");
+var blue=document.getElementById("blue");
 
-function random(){
-  var num= Math.floor(Math.random() * 4);
-  correctOrder.push(num);
-}
 
 
 function lightUp(){
   for (let i=0; i<correctOrder.length; i++){
-  var ran=correctOrder[i];
- if (ran==0){
-   setTimeout(() => {green()}, 500);
-   setTimeout(() => {green()}, 1000);
- } else if (ran==1){
-   setTimeout(() => {red()}, 500);
-   setTimeout(() => {red()}, 1000);
- } else if (ran==2){
-   setTimeout(() => {blue()}, 500);
-   setTimeout(() => {blue()}, 1000);
- } else{
-   setTimeout(() => {yellow()}, 500);
-   setTimeout(() => {yellow()}, 1000);
- }
-}
-}
-
-function game(){
-  lightUp();
-  greenButton.addEventListener("click", function() {
-    userOrder.push(0);
-    green();
-  });
-  redButton.addEventListener("click", function() {
-    userOrder.push(1);
-    red();
-  });
-  yellowButton.addEventListener("click", function() {
-    userOrder.push(3);
-    yellow();
-  });
-  blueButton.addEventListener("click", function() {
-    userOrder.push(2);
-    blue();
-  });
-}
-
-function playGame(){
-  for (let i=1; i<20; i++){
-    game();
-    if (userOrder==correctOrder){
-      random();
-    } else{
-      console.log("you lost");
+    var ran=correctOrder[i];
+    if (ran==0){
+      setTimeout(() => {green.classList.remove("active")}, 500);
+      setTimeout(() => {green.classList.add("active")}, 1000);
+    }
+    else if (ran==1){
+      setTimeout(() => {red.classList.remove("active")}, 500);
+      setTimeout(() => {red.classList.add("active")}, 1000);
     }
   }
+
 }
 
  </script>

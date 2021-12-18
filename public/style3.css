@@ -20,22 +20,6 @@
   position:absolute; left: 45%;
 }
 
-.image1 {
-  border: 20px solid blue;
-  border-radius: 10px;
-  padding: 5px;
-  width: 400px;
-  position:absolute;top:90%;
-}
-
-.img2{
-  border:20px solid pink;
-  border-radius:10px;
-  padding: 5px;
-  width: 400px;
-  position: absolute; top: 85%;
-  position:absolute; left:35%;
-}
 
 .block{
   float:left;
@@ -57,61 +41,39 @@
   display:block;
 }
 
-.block-filled1{
-  background-color: #55eb34;
-  border-style: solid;
-  border-color: black;
-  width:90px;
-  height:90px;
-}
-
-.block-filled2{
-  background-color: #de8983;
-  border-style: solid;
-  border-color: black;
-  width:90px;
-  height:90px;
-}
-
-.block-filled3{
-  background-color: #83ccde;
-  border-style: solid;
-  border-color: black;
-  width:90px;
-  height:90px;
-}
-
-.block-filled4{
-  background-color: #e2ed6d;
-  border-style: solid;
-  border-color: black;
-  width:90px;
-  height:90px;
-}
 
 
-
-.green{
-  background-color: green;
-  width:90px;
-  height:90px;
+button {
+  border: 10px solid #000;
+  cursor: pointer;
+  height: 300px;
+  margin: 0 -2px;
+  outline: none;
+  padding: 0;
+  width: 300px;
 }
 
 
 .red{
   background-color:red;
-  width:90px;
-  height: 90px;
+    opacity: .6;
 }
 
-.blue{
-  background-color:blue;
-  width:90px;
-  height: 90px;
+.green{
+  background-color:green;
+    opacity: .6;
 }
 
 .yellow{
   background-color:yellow;
-  width:90px;
-  height:90px;
+    opacity: .6;
+}
+
+.blue {
+  background-color:blue;
+    opacity: .6;
+}
+
+.active{
+  opacity: 1;
 }
