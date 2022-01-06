@@ -45,6 +45,12 @@
 <input class="button" type="submit" value="Submit" name="">
 </form>
 
+<div class="container">
+  <input class="storage" type="text">
+  <p id="text"> Score </p>
+</div>
+
+
 <div class="simon">
   <button onclick="(function(){userOrder.push(0); update_state();})();" class="active green" id="green"> greenButton </button>
   <button onclick="(function(){userOrder.push(1); update_state();})();" class="active red" id="red"> redButton </button>
@@ -61,6 +67,10 @@ var green=document.getElementById("green");
 var red=document.getElementById("red");
 var yellow =document.getElementById("yellow");
 var blue=document.getElementById("blue");
+var score=0;
+var highScore=0;
+var high1;
+
 
 function random(){
 var ran=  Math.floor(Math.random() * 4);
@@ -106,6 +116,7 @@ var i = 0;
 function start(){
   random();
   lightUp();
+  score=0;
 }
 
 function update_state() {
@@ -131,101 +142,25 @@ var arraysMatch = function (arr1, arr2) {
 
 	// Check if all items exist and are in the same order
 	for (var i = 0; i < arr1.length; i++) {
-		if (arr1[i] !== arr2[i]) return false;
+		if (arr1[i] !== arr2[i]) {
+      return false;
 	}
+}
 
 	// Otherwise, return true
+  score++;
+  if (score>highScore){
+    highScore=score;
+    window.localStorage.setItem('high', highScore);
+    high1=window.localStorage.getItem('high');
+    var j=document.getElementById("text");
+    j.innerHTML=high1
+  }
 	return true;
 };
 
-/*
-function lightUp(){
-  for (var i=0; i<correctOrder.length; i++){
-    var ran=correctOrder[i];
-    if (ran==0){
-      setTimeout(() => {green.classList.remove("active")}, 500);
-      setTimeout(() => {green.classList.add("active")}, 1000);
-      sleep(1000);
-    }
-    else if (ran==1){
-      setTimeout(() => {red.classList.remove("active")}, 500);
-      setTimeout(() => {red.classList.add("active")}, 1000);
-    }
-
-  }
-}
-*/
-  /*
-  setTimeout(()=>{
-      if(correctOrder[ran]==0) zero();
-      if(correctOrder[ran]==1) one();
-      if(correctOrder[ran]==2) two();
-      if(correctOrder[ran]==3) three();
-    }, 200);
-  */
-//}
-
-/*
-function runLightUp(){
-  for (var i=0; i<correctOrder.length; i++){
-    var ran=correctOrder[i];
-      intervalId=setInterval(lightUp, 800);
-      lightUp();
-  }
-}
-
-
-
-function zero(){
-  green.classList.remove("active");
-  setTimeout(() => {green.classList.add("active")}, 600);
-}
-
-function one(){
-  green.classList.remove("active");
-  setTimeout(() => {green.classList.add("active")}, 600);
-}
-
-function two(){
-  green.classList.remove("active");
-  setTimeout(() => {green.classList.add("active")}, 600);
-}
-
-function three(){
-  green.classList.remove("active");
-  setTimeout(() => {green.classList.add("active")}, 600);
-}
-
-function playGame(){
-  for (var i=1; i<21; i++){
-    runLightUp();
-    green.addEventListener("click", function() {
-    userOrder.push(0);
-});
-red.addEventListener("click", function() {
-userOrder.push(1);
-});
-blue.addEventListener("click", function() {
-userOrder.push(2);
-});
-yellow.addEventListener("click", function() {
-userOrder.push(3);
-});
-if (arraysMatch(correctOrder,userOrder)){
-  random();
-}
-else{
-  alert("you lost");
-  break;
-}
-
-}
-
-}
-
-
-*/
  </script>
+
 
 </body>
 </html>
