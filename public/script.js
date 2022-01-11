@@ -1,3 +1,11 @@
+var buttons = {
+  green: document.getElementById("green"),
+  red: document.getElementById("red"),
+  yellow: document.getElementById("yellow"),
+  blue: document.getElementById("blue"),
+  start : document.getElementById("start")
+};
+
 var gameState = {
   correctOrder : [],
   userOrder : [],
@@ -27,91 +35,79 @@ var gameState = {
       j.innerHTML = this.high1;
     }
     return true;
-  }
-};
+  },
+  randomAdd: function(){
+    var ran = Math.floor(Math.random() * 4);
+    this.correctOrder.push(ran);
+  },
+  lightUp : function() {
 
-var buttons = {
-  green: document.getElementById("green"),
-  red: document.getElementById("red"),
-  yellow: document.getElementById("yellow"),
-  blue: document.getElementById("blue"),
-};
-buttons.green.addEventListener("click",function(){gameState.userOrder.push(0); update_state();});
-buttons.red.addEventListener("click",function(){gameState.userOrder.push(1); update_state();});
-buttons.blue.addEventListener("click",function(){gameState.userOrder.push(2); update_state();});
-buttons.yellow.addEventListener("click",function(){gameState.userOrder.push(3); update_state();});
+    var i = 0;
+    var correctOrder = this.correctOrder;
+    function correctOrderLightUpLoop() {
+      setTimeout(function() {
+        var ran = correctOrder[i];
+        if (ran == 0) {
+          setTimeout(() => {
+            buttons.green.classList.remove("active")
+          }, 500);
+          setTimeout(() => {
+            buttons.green.classList.add("active")
+          }, 1000);
+        } else if (ran == 1) {
+          setTimeout(() => {
+            buttons.red.classList.remove("active")
+          }, 500);
+          setTimeout(() => {
+            buttons.red.classList.add("active")
+          }, 1000);
+        } else if (ran == 2) {
+          setTimeout(() => {
+            buttons.blue.classList.remove("active")
+          }, 500);
+          setTimeout(() => {
+            buttons.blue.classList.add("active")
+          }, 1000);
+        } else if (ran == 3) {
+          setTimeout(() => {
+            buttons.yellow.classList.remove("active")
+          }, 500);
+          setTimeout(() => {
+            buttons.yellow.classList.add("active")
+          }, 1000);
+        }
+        i++;
+        if (i < correctOrder.length) {
+          correctOrderLightUpLoop()
+        }
+      }, 1000)
 
-
-function randomAdd() {
-  var ran = Math.floor(Math.random() * 4);
-  gameState.correctOrder.push(ran);
-}
-
-function lightUp() {
-
-  var i = 0;
-
-  function correctOrderLightUpLoop() {
-
-    setTimeout(function() {
-      var ran = gameState.correctOrder[i];
-      if (ran == 0) {
-        setTimeout(() => {
-          buttons.green.classList.remove("active")
-        }, 500);
-        setTimeout(() => {
-          buttons.green.classList.add("active")
-        }, 1000);
-      } else if (ran == 1) {
-        setTimeout(() => {
-          buttons.red.classList.remove("active")
-        }, 500);
-        setTimeout(() => {
-          buttons.red.classList.add("active")
-        }, 1000);
-      } else if (ran == 2) {
-        setTimeout(() => {
-          buttons.blue.classList.remove("active")
-        }, 500);
-        setTimeout(() => {
-          buttons.blue.classList.add("active")
-        }, 1000);
-      } else if (ran == 3) {
-        setTimeout(() => {
-          buttons.yellow.classList.remove("active")
-        }, 500);
-        setTimeout(() => {
-          buttons.yellow.classList.add("active")
-        }, 1000);
-      }
-      i++;
-      if (i < gameState.correctOrder.length) {
-        correctOrderLightUpLoop()
-      }
-    }, 1000)
-
-  }
-
-  correctOrderLightUpLoop();
-}
-
-
-function start() {
-  randomAdd();
-  lightUp();
-  gameState.score = 0;
-}
-
-function update_state() {
-  if (gameState.userOrder.length == gameState.correctOrder.length) {
-    if (gameState.arraysMatch()) {
-      gameState.userOrder = [];
-      randomAdd();
-      lightUp();
-    } else {
-      alert(" :( ");
-      gameState.userOrder = [];
-      gameState.correctOrder = [];
     }
+
+    correctOrderLightUpLoop();
+  },
+  update_state: function(){
+    if (this.userOrder.length == this.correctOrder.length) {
+      if (this.arraysMatch()) {
+        this.userOrder = [];
+        this.randomAdd();
+        this.lightUp();
+      } else {
+        alert(" :( ");
+        this.userOrder = [];
+        this.correctOrder = [];
+      }
+    }
+  },
+  start: function(){
+    this.randomAdd();
+    this.lightUp();
+    this.score = 0;
   }
-}
+};
+
+buttons.green.addEventListener("click",function(){gameState.userOrder.push(0); gameState.update_state();});
+buttons.red.addEventListener("click",function(){gameState.userOrder.push(1); gameState.update_state();});
+buttons.blue.addEventListener("click",function(){gameState.userOrder.push(2); gameState.update_state();});
+buttons.yellow.addEventListener("click",function(){gameState.userOrder.push(3); gameState.update_state();});
+buttons.start.addEventListener("click",function(){gameState.start();});
