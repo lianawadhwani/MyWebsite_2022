@@ -1,166 +1,69 @@
+correctOrderLightUpLoop()<html>
 
-<html>
 <head>
-<link rel="stylesheet" type="text/css" href="style3.css">
- <title> My Website </title>
+  <link rel="stylesheet" type="text/css" href="style3.css">
+  <title> My Website </title>
 </head>
+
 <body>
   <div class="div1">
-  <h1 class="h1"> Advanced Topics </h1>
-  <p>
+    <h1 class="h1"> Advanced Topics </h1>
+    <p>
     <h2 class="h2"> Paragraph 1</h2>
     lorum ipsum some other latin stuff ;). This is my paragraph yay!
     <div class="class3">
-    <a class="words" href="https://findtheinvisiblecow.com"> You should click on this. You won't be sorry! </a>
+      <a class="words" href="https://findtheinvisiblecow.com"> You should click on this. You won't be sorry! </a>
+    </div>
+    </p>
   </div>
-  </p>
-</div>
 
-<div class="block">
-  <h3>Heading</h3>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
-</div>
-<div class="block">
-  <h3>Heading</h3>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
-</div>
-<div class="block">
-  <h3>Heading</h3>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
-</div>
-
-
-<form class="my-form">
-  <div class="form-group">
-    <label> Name </label>
-    <input type="text"  name="name">
+  <div class="block">
+    <h3>Heading</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
   </div>
-<div class="form-group">
-  <label> Messages: </label>
-  <textarea name="messages"> </textarea>
-</div>
-<input class="button" type="submit" value="Submit" name="">
-</form>
-
-<div class="container">
-  <input class="storage" type="text">
-  <p id="text"> Score </p>
-</div>
-
-
-<div class="simon">
-  <button onclick="(function(){userOrder.push(0); update_state();})();" class="active green" id="green"> greenButton </button>
-  <button onclick="(function(){userOrder.push(1); update_state();})();" class="active red" id="red"> redButton </button>
-  <button onclick="(function(){userOrder.push(2); update_state();})();" class="active blue" id="blue"> blueButton </button>
-  <button onclick="(function(){userOrder.push(3); update_state();})();" class="active yellow" id="yellow"> yellowButton </button>
-  <button onclick="start()" class="button" id="start">Start </button>
-
-</div>
-
-<script>
-var correctOrder=[];
-var userOrder=[];
-var green=document.getElementById("green");
-var red=document.getElementById("red");
-var yellow =document.getElementById("yellow");
-var blue=document.getElementById("blue");
-var score=0;
-var highScore=0;
-var high1;
+  <div class="block">
+    <h3>Heading</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+  </div>
+  <div class="block">
+    <h3>Heading</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+  </div>
 
 
-function random(){
-var ran=  Math.floor(Math.random() * 4);
-  correctOrder.push(ran);
-}
+  <form class="my-form">
+    <div class="form-group">
+      <label> Name </label>
+      <input type="text" name="name">
+    </div>
+    <div class="form-group">
+      <label> Messages: </label>
+      <textarea name="messages"> </textarea>
+    </div>
+    <input class="button" type="submit" value="Submit" name="">
+  </form>
 
-function lightUp(){
-
-var i = 0;
-
-  function myLoop() {
-
-     setTimeout(function() {
-       var ran=correctOrder[i];
-       if (ran==0){
-           setTimeout(() => {green.classList.remove("active")}, 500);
-           setTimeout(() => {green.classList.add("active")}, 1000);
-       }
-       else if (ran==1){
-           setTimeout(() => {red.classList.remove("active")}, 500);
-           setTimeout(() => {red.classList.add("active")}, 1000);
-       }
-       else if (ran==2){
-           setTimeout(() => {blue.classList.remove("active")}, 500);
-           setTimeout(() => {blue.classList.add("active")}, 1000);
-       }
-       else if (ran==3){
-           setTimeout(() => {yellow.classList.remove("active")}, 500);
-           setTimeout(() => {yellow.classList.add("active")}, 1000);
-       }
-           i++;
-           if (i < correctOrder.length) {
-             myLoop()
-           }
-       }, 1000)
-
-    }
-
-   myLoop();
-}
+  <div class="container">
+    <input class="storage" type="text">
+    <p id="text"> Score </p>
+  </div>
 
 
-function start(){
-  random();
-  lightUp();
-  score=0;
-}
+  <div class="simon">
+    <button class="active green" id="green"> greenButton </button>
+    <button class="active red" id="red"> redButton </button>
+    <button class="active blue" id="blue"> blueButton </button>
+    <button class="active yellow" id="yellow"> yellowButton </button>
+    <button onclick="start()" class="button" id="start">Start </button>
 
-function update_state() {
- 	if (userOrder.length == correctOrder.length) {
-      if (arraysMatch(userOrder, correctOrder)) {
-        userOrder=[];
-        random();
-        lightUp();
-      }
-      else {
-        alert (" :( ");
-        userOrder=[];
-        correctOrder=[];
-      }
-    }
-}
+  </div>
 
-
-var arraysMatch = function (arr1, arr2) {
-
-	// Check if the arrays are the same length
-	if (arr1.length !== arr2.length) return false;
-
-	// Check if all items exist and are in the same order
-	for (var i = 0; i < arr1.length; i++) {
-		if (arr1[i] !== arr2[i]) {
-      return false;
-	}
-}
-
-	// Otherwise, return true
-  score++;
-  if (score>highScore){
-    highScore=score;
-    window.localStorage.setItem('high', highScore);
-    high1=window.localStorage.getItem('high');
-    var j=document.getElementById("text");
-    j.innerHTML=high1
-  }
-	return true;
-};
-
- </script>
+  <script src = "script.js"></script>
 
 
 </body>
+
 </html>
