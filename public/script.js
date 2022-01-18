@@ -111,3 +111,26 @@ buttons.red.addEventListener("click",function(){gameState.userOrder.push(1); gam
 buttons.blue.addEventListener("click",function(){gameState.userOrder.push(2); gameState.update_state();});
 buttons.yellow.addEventListener("click",function(){gameState.userOrder.push(3); gameState.update_state();});
 buttons.start.addEventListener("click",function(){gameState.start();});
+
+var canvas = document.createElement('canvas');
+document.body.appendChild(canvas);
+canvas.width=window.screen.width;
+canvas.height=window.screen.height;
+var context= canvas.getContext("2d");
+
+var x=100;
+var y=20;
+var xstep= 1;
+var ystep=.25;
+window.requestAnimationFrame(function loop(){
+context.clearRect(0,0, canvas.width, canvas.height);
+if (x>innerWidth || x<0){
+    xstep=-xstep;
+    ystep=-ystep;
+  }
+  x+=xstep;
+  y+=ystep;
+context.fillStyle="pink";
+context.fillRect(x,y, 100, 100);
+window.requestAnimationFrame(loop);
+});
