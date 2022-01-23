@@ -112,6 +112,7 @@ buttons.blue.addEventListener("click",function(){gameState.userOrder.push(2); ga
 buttons.yellow.addEventListener("click",function(){gameState.userOrder.push(3); gameState.update_state();});
 buttons.start.addEventListener("click",function(){gameState.start();});
 
+
 var canvas = document.createElement('canvas');
 document.body.appendChild(canvas);
 canvas.width=window.screen.width;
@@ -131,6 +132,8 @@ if (x>innerWidth || x<0){
   x+=xstep;
   y+=ystep;
 context.fillStyle="pink";
-context.fillRect(x,y, 100, 100);
+context.fillRect(x,0, 100, 100);
+context.fillStyle="blue";
+context.fillRect(0,y,100, 100)
 window.requestAnimationFrame(loop);
 });
